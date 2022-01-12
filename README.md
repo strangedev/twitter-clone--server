@@ -28,9 +28,7 @@ The server is now running on port `4000`.
 
 ## Executing requests
 
-Take a look at the [Insomnia](https://insomnia.rest/) configuration at [`.
-/Insomnia.json`](`.
-/Insomnia.json`).
+Take a look at the [Insomnia](https://insomnia.rest/) configuration at [`./Insomnia.json`](`./Insomnia.json`).
 
 ## Inspecting the database
 
