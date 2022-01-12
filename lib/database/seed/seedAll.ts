@@ -57,7 +57,10 @@ const seedDatabase = async function (): Promise<void> {
       continue;
     }
 
-    accounts[seedAccount.handle] = new AccountModel(seedAccount);
+    const account = new AccountModel(seedAccount);
+
+    accounts[seedAccount.handle] = account;
+    await account.save();
   }
 
   for (const seedTweet of seedTweets) {
@@ -69,8 +72,11 @@ const seedDatabase = async function (): Promise<void> {
 
     const tweet = new TweetModel({
       text: seedTweet.text,
+      // eslint-disable-next-line no-underscore-dangle
       account: accounts[seedTweet.accountHandle]._id
     });
+
+    await tweet.save();
   }
 };
 
