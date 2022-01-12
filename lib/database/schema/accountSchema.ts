@@ -1,5 +1,5 @@
-import { HydratedDocument, model, Schema } from 'mongoose';
 import { Account as AccountType } from '../../domainModel/Account';
+import { HydratedDocument, model, Schema } from 'mongoose';
 
 const accountSchema = new Schema({
   handle: { type: String, index: true },
