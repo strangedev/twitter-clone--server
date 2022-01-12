@@ -1,4 +1,5 @@
 import { Account, AccountModel, InitAccount } from '../schema/accountSchema';
+import { CredentialsModel, InitCredentials } from '../schema/credentialsSchema';
 import { InitTweet, TweetModel } from '../schema/tweetSchema';
 
 type SeedTweet = InitTweet & {
@@ -48,6 +49,39 @@ const seedDatabase = async function (): Promise<void> {
     }
   ];
 
+  const seedCredentials: InitCredentials[] = [
+    {
+      handle: 'strangedev',
+      passwordHash: 'aad18c23684c5053857cf7c740d9f5a3d3b01a79',
+      passwordSalt: 'foobar',
+      hashMethod: {
+        hashFunction: 'sha1',
+        iterations: 1,
+        saltMethod: 'prepend'
+      }
+    },
+    {
+      handle: 'kuchensucher',
+      passwordHash: 'aad18c23684c5053857cf7c740d9f5a3d3b01a79',
+      passwordSalt: 'foobar',
+      hashMethod: {
+        hashFunction: 'sha1',
+        iterations: 1,
+        saltMethod: 'prepend'
+      }
+    },
+    {
+      handle: 'schwurbelschwarte',
+      passwordHash: 'aad18c23684c5053857cf7c740d9f5a3d3b01a79',
+      passwordSalt: 'foobar',
+      hashMethod: {
+        hashFunction: 'sha1',
+        iterations: 1,
+        saltMethod: 'prepend'
+      }
+    }
+  ];
+
   const accounts: Record<string, Account> = {};
 
   for (const seedAccount of seedAccounts) {
@@ -77,6 +111,12 @@ const seedDatabase = async function (): Promise<void> {
     });
 
     await tweet.save();
+  }
+
+  for (const seedCredential of seedCredentials) {
+    const credentials = new CredentialsModel(seedCredential);
+
+    await credentials.save();
   }
 };
 
