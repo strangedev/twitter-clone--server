@@ -5,6 +5,7 @@ import { getAccountsTweets } from './routes/tweets/getAccountsTweets';
 import { getEveryonesTweets } from './routes/tweets/getEveryonesTweets';
 import { publishTweet } from './routes/tweets/publishTweet';
 import { startSession } from './routes/sessions/startSession';
+import { updateOwnBio } from './routes/accounts/updateOwnBio';
 import express, { Express } from 'express';
 
 const router = function (): Express {
@@ -16,6 +17,7 @@ const router = function (): Express {
   app.use('/sessions', startSession());
 
   app.use('/accounts', getAccount());
+  app.use('/accounts', updateOwnBio());
 
   app.use('/tweets', getEveryonesTweets());
   app.use('/tweets', getAccountsTweets());

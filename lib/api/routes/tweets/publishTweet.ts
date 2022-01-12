@@ -19,13 +19,13 @@ const publishTweet = function (): Express {
   const api = express();
 
   api.post('/publish', async (req, res): Promise<unknown> => {
-    const { account } = req;
+    const { account, body } = req;
 
     if (!account) {
       return res.status(401).end();
     }
 
-    const parserResult = publishTweetRequestParser.parse(req.body);
+    const parserResult = publishTweetRequestParser.parse(body);
 
     if (parserResult.hasError()) {
       return res.status(400).json(parserResult.error);
