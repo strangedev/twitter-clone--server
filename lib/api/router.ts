@@ -1,5 +1,6 @@
 import { authentication } from './middleware/authentication';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import { getAccount } from './routes/accounts/getAccount';
 import { getAccountsTweets } from './routes/tweets/getAccountsTweets';
 import { getEveryonesTweets } from './routes/tweets/getEveryonesTweets';
@@ -11,6 +12,7 @@ import express, { Express } from 'express';
 const router = function (): Express {
   const app = express();
 
+  app.use(cors());
   app.use(bodyParser.json());
   app.use(authentication());
 
